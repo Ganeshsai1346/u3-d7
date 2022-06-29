@@ -1,3 +1,10 @@
+/** @format */
+
+body {
+  background-color: #282c34 !important;
+  color: white !important;
+}
+
 .App {
   text-align: center;
 }
@@ -35,4 +42,19 @@
   to {
     transform: rotate(360deg);
   }
+}
+#card {
+  background-color: inherit;
+  border: none;
+}
+
+.card-img {
+  height: 240px;
+  width: 155px;
+}
+.card-body {
+  padding: 5px !important;
+}
+.card-text {
+  padding: 2px;
 }

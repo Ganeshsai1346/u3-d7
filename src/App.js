@@ -1,25 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import BookList from './components/BookList';
+import CommentArea from './components/CommentArea'
+import { Container, Row, Col } from 'react-bootstrap';
+import scifiBooks from './data/scifi.json'
+import { useState } from 'react';
 
-function App() {
+const App = () => {
+
+  /* state = {
+    asin: ""
+  }; */
+
+  const [asin, setAsin] = useState(null)
+
+
+  /* showComments = (newAsin) => {
+    this.setState(
+      { asin: newAsin }
+    )
+  } */
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Container>
+        <Row>
+          <Col md={8}><BookList books={scifiBooks} showComments={setAsin} /></Col>
+          <Col md={4}><CommentArea asin={asin} /></Col>
+        </Row>
+      </Container>
     </div>
   );
 }
+
+
 
 export default App;
