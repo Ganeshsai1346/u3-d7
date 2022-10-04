@@ -11,6 +11,7 @@ const CommentArea = ({ asin }) => {
   }; */
 
   const [comments, setComments] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   /* componentDidMount = () => {
     if (this.props.asin) this.fetchComments();
@@ -18,6 +19,7 @@ const CommentArea = ({ asin }) => {
 
   useEffect(() => {
     fetchComments();
+    console.log("Component Did Mount");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -29,6 +31,7 @@ const CommentArea = ({ asin }) => {
 
   useEffect(() => {
     fetchComments();
+    console.log("Component Did Update");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [asin]);
 
@@ -39,16 +42,13 @@ const CommentArea = ({ asin }) => {
         {
           headers: {
             Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmEzM2RmMDdmZmQ0OTAwMTU4YTdhOWEiLCJpYXQiOjE2NTU5ODQ3NTAsImV4cCI6MTY1NzE5NDM1MH0.eq4eTFEZTokG0XppZERDfyrOXMSWXsviQ2Is8_YCqN4",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzNjMTZmYjRjYzU2YzAwMTU2ZjE5NmMiLCJpYXQiOjE2NjQ4ODI0MjcsImV4cCI6MTY2NjA5MjAyN30.2RDte3wVXvN0Cr-WCkw2llKFBIfW0ToegCCaQ9pNqyI",
           },
         }
       );
       if (response.ok) {
         const data = await response.json();
         console.log(data);
-        /* this.setState({
-          comments: data,
-        }); */
         setComments(data);
       } else {
         alert("Something happened!");

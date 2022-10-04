@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 
-const AddComment = ({ asin }) => {
+const AddComment = ({ asin, setIsLoading }) => {
   const [addComment, setAddComment] = useState({
     comment: "",
     rate: 1,
@@ -27,12 +27,13 @@ const AddComment = ({ asin }) => {
           headers: {
             "Content-Type": "application/json",
             Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmEzM2RmMDdmZmQ0OTAwMTU4YTdhOWEiLCJpYXQiOjE2NTU5ODQ3NTAsImV4cCI6MTY1NzE5NDM1MH0.eq4eTFEZTokG0XppZERDfyrOXMSWXsviQ2Is8_YCqN4",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzNjMTZmYjRjYzU2YzAwMTU2ZjE5NmMiLCJpYXQiOjE2NjQ4ODI0MjcsImV4cCI6MTY2NjA5MjAyN30.2RDte3wVXvN0Cr-WCkw2llKFBIfW0ToegCCaQ9pNqyI",
           },
         }
       );
       if (response.ok) {
         alert("Comment Added!");
+        setIsLoading(false);
       }
     } catch (error) {
       console.log("error:", error);
